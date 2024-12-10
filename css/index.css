@@ -1,0 +1,565 @@
+@import url('https://fonts.googleapis.com/css2?family=Fenix&display=swap');
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  /* Основной стиль для header */
+/* Основной стиль для header */
+
+  
+ /* Стили для main-content */
+ .main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px; /* Высота */
+  width: 1200px; /* Ширина */
+  margin: 20px auto;
+  position: relative;
+  border-radius: 30px;
+  padding: 0 15px;
+  overflow: hidden; /* Чтобы изображения не выходили за рамки блока */
+}
+
+.main-content img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  height: 100%;
+  object-fit: fill; /* Обеспечивает корректное масштабирование изображения */
+  border-radius: 30px;
+
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.main-content img.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.main-content img.previous {
+  transform: translateX(-100%);
+}
+
+  
+  .text-block {
+    margin-top: 120px;
+    width: 100%; /* Занимает 70% ширины контейнера */
+    padding: 30px;
+    margin-right: 600px;
+    border-radius: 20px; /* Закругленные углы у блока текста */
+    text-align: left; /* Выравнивание текста по левому краю */
+    color: white; /* Белый цвет текста */
+    z-index: 1; /* Помещаем текст поверх фона */
+  }
+  
+  .text-block p {
+    font-family: 'Gilroy';
+    font-size: 24px;
+    line-height: 1;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5); /* Тень для текста */
+  }
+  
+  .text-block h1 pre {
+    font-family: 'Gilroy';
+    font-size: 60px; /* Размер шрифта заголовка */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Тень для текста */
+  }
+  
+  .buttons {
+    display: flex;
+    margin-left: 110px;
+  }
+  .btn-order{
+    background-color: white;
+
+  }
+  .btn-order, .btn-collection {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Тень для текста */
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Gilroy';
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-collection{
+    color: #fff;
+    background:rgba(0, 0, 0, 0.048);
+    
+  }
+  .btn-order:hover, .btn-collection:hover {
+    background-color: black;
+    color: white;
+  }
+  .info-section {
+    display: flex;
+    justify-content: space-between;
+    height: 170px;
+    width: 1230px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 15px;
+    
+  }
+
+  .info-card {
+    margin-left: 40px;
+    margin-right: 40px;
+    color: white;
+    width: 40%; /* Каждая карточка будет занимать 48% от ширины секции */
+    background-color: #5727275e;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .info-card h2 {
+    font-family: 'Gilroy';
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .info-card p {
+    color: white;
+    font-family: 'Gilroy';
+    font-size: 16px;
+    line-height: 1.4;
+    flex: 1; /* Занимает все доступное пространство */
+  }
+  
+
+.client-image {
+  width: 140px; /* Ширина изображения */
+  height: 80px; /* Высота изображения */
+  border-radius: 10px;
+  object-fit: cover; /* Обрезка фото для заполнения блока */
+  align-self: flex-end; /* Размещаем фото в правом нижнем углу */
+}
+  
+  .card-image {
+    width: 40%; /* Размер изображения кольца */
+    height: 80px;
+    width: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+/* Стиль для всей страницы */
+.page-container {
+    width: 1230px;
+    height: 600px;
+    background-color: #FBEDEC; /* Светлый фон */
+    border-radius: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Внутренний блок */
+  .content-block {
+    width: 800px;
+    height: 500px;
+    display: flex;
+    border-radius: 20px;
+    
+  }
+  
+  /* Левая часть с текстом */
+  .text-section {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .text-section h1 {
+    font-size: 40px;
+    font-family: "Gilroy";
+    font-weight: bold;
+    background: linear-gradient(90deg, #c58558, #0000008d 70%);
+    -webkit-background-clip: text; /* Применяет градиент только к тексту */
+    -webkit-text-fill-color: transparent; /* Убирает цвет заливки текста */
+  }
+  
+  .text-section p {
+    font-family: 'Gilroy-Regular';
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .shop-now {
+    font-family: 'Girloy';
+    font-size: 24px;
+    font-weight: 600;
+    width: 180px;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #3C3434;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .shop-now:hover{
+    background: rgba(26, 16, 16, 0.692);
+    color: #fff;
+  }
+  
+  /* Правая часть с изображением */
+  .image-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-section img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
+  }
+  
+  /* Блок с кнопками */
+  .buttons-section {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .buttons-section .btn {
+    font-family: 'Gilda';
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #3C3434;
+    border: none;
+    border-radius: 20px;
+    width: 16%; /* 4 кнопки равномерно */
+  }
+  .collection-section {
+    width: 1230px;
+    height: 600px;
+    margin: 10px auto;
+    position: relative;
+    background-color: #FBEDEC;
+    border-radius: 40px;
+  }
+  
+  .card {
+    font-family: 'Gilroy';
+    width: 280px;
+    height: 250px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.428);
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+ 
+  
+  .card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    width: 60%;
+    margin: 10px auto;
+  }
+  
+  .card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .card .card-image {
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем внешние отступы */
+    border: none; /* Убираем границы */
+    background: none; /* Убираем фон */
+    background-color: transparent; /* Прозрачный фон */
+    width: 160px;
+    height: 180px;
+    object-fit: cover; /* Подгоняем изображение */
+    position: absolute;
+    left: 50%; /* Центруем */
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+  /* Позиционируем карточки */
+  .card:nth-child(1) {
+    top: 10%;
+    left: 5%;
+  }
+  
+  .card:nth-child(2) {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .card:nth-child(3) {
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+  }
+  /* Стили для страницы Каталог */
+/* Стили для страницы Каталог */
+/* Стили для страницы Каталог */
+.catalog {
+    width: 1230px;
+    height: 600px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+  }
+  
+  .catalog-title {
+    font-family: 'Girloy';
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 20px;
+  }
+  
+  .catalog-divider {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    border: none;
+    border-top: 2px solid #ccc;
+  }
+  
+  .catalog-description {
+    font-family: 'Girloy';
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .catalog-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+  }
+  
+  .catalog-card {
+    width: 160px;
+    height: 320px; /* увеличено, чтобы поместилась кнопка */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .catalog-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .catalog-card-image {
+    width: 100%;
+    height: 150px; /* уменьшена высота, чтобы больше места для кнопки */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .catalog-card h3 {
+    font-family: 'Girloy';
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .catalog-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color:#fcb9b5;
+    color: white;
+    font-size: 16px;
+    font-family: 'Girloy';
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .catalog-button:hover {
+    background-color: #42343fad;
+  }
+  .product-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.product-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.product-modal img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.product-modal button {
+    padding: 10px 20px;
+    background-color: #fcb9b5;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.product-modal button:hover {
+    background-color: #42343fad;
+}
+
+  /* Стили для страницы Download our App */
+.download {
+    border-radius: 30px;
+    background-color: white;
+    width: 1230px;
+    height: 850px;
+    margin: 10px auto;
+    font-family: 'Girloy', sans-serif;
+  }
+  
+  /* Основной контейнер для контента */
+  .download-content {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 500px;
+    margin-bottom: 30px;
+  }
+  
+  /* Левая часть */
+  .download-left {
+    margin-left: 90px;
+    width: 45%;
+    text-align: left;
+  }
+  
+  .download-left h2 {
+
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .download-left p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .app-icons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .app-icon img {
+    width: 180px;
+    height: auto;
+  }
+  
+  /* Правая часть */
+  .download-right {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .iphone-image {
+    width: 70%;
+    height: 600px;
+    object-fit: contain;
+  }
+  
+  /* Линия */
+  .download-divider {
+    width: 90%;
+    margin: 40px auto;
+    border: none;
+    border-top: 2px solid #ccc;
+  }
+  
+  .download-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    grid-gap: 20px;
+    justify-items: center;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: 'Girloy','sans-serif';
+    font-weight: bold;
+  }
+  
+  .download-links a {
+    color: #0d0707;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .download-links a:hover {
+    color: #1956cf;
+  }
+  
+  
+  
+  

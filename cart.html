@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Себет - AIG JEWELRY</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/cart.css">
+  <link rel="stylesheet" href="./css/header.css">
+</head>
+<body>
+
+  <!-- Используем   хедер из index.html -->
+  <header class="header">
+    <div class="logo">AIG JEWELRY</div>
+    <nav class="nav">
+      <a href="index.html#main-content">Басты бет</a>
+      <!-- Выпадающее меню для каталога -->
+      <div class="dropdown">
+        <a href="index.html#catalog" class="dropdown-link">Каталог</a>
+        <div class="dropdown-content">
+          <a href="#">Әшекейлер</a>
+          <a href="#">Сағат</a>
+          <a href="#">Алтын</a>
+          <a href="#">Күміс</a>
+        </div>
+      </div>
+
+      <a href="#">Серіктестер</a>
+      <a href="#">Біз жайлы</a>
+      <a href="cart.html">Себет</a>
+    </nav>
+
+    <!-- Иконка для сайдбара -->
+    <div class="sidebar-toggle" id="sidebar-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
+
+  <!-- Сайдбар -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="index.html#main-content">Басты бет</a></li>
+      <li><a href="index.html#catalog">Каталог</a></li>
+      <li><a href="#">Бізбен байланыс</a></li>
+      <li><a href="#">Біз жайлы</a></li>
+    </ul>
+  </div>
+
+
+  <!-- Контент страницы корзины -->
+  <section id="cart" class="cart">
+    <h2>Себет</h2>
+    <div id="cart-items" class="cart-items">
+      <!-- Здесь будут отображаться товары, добавленные в корзину -->
+    </div>
+    <div id="total-price">
+      <p>Жалпы сумма: <span id="total">0₸</span></p>
+      <button id="buy-button">Сатып алу</button>
+    </div>
+  </section>
+
+  <!-- Модальное окно для выбора способа оплаты -->
+  <div id="payment-modal" class="payment-modal">
+    <div class="payment-modal-content">
+      <h3>Төлем әдісін таңдаңыз</h3>
+      <button class="payment-option" data-payment="card">Карта</button>
+      <button class="payment-option" data-payment="cash">Қолма қол</button>
+      <button class="payment-option" data-payment="bank">Банк арқылы</button>
+      <button id="close-payment-modal">Жабу</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('sidebar-toggle').addEventListener('click', function () {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open'); // Открытие/закрытие сайдбара
+    });
+    
+    window.addEventListener('load', () => {
+  const hash = window.location.hash; // Получаем хэш из URL
+  if (hash) {
+    const targetSection = document.querySelector(hash); // Находим секцию по ID
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем к секции
+    }
+  }
+});
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Функция для сохранения корзины в localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Обновляем корзину при каждой модификации
+function updateCart() {
+  const cartItems = document.getElementById("cart-items");
+  const totalPrice = document.getElementById("total");
+
+  // Очищаем список товаров
+  cartItems.innerHTML = '';
+
+  // Если корзина пуста
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p>Себет бос!</p>';
+    totalPrice.textContent = '0₸';
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const itemName = item.name || "Белгісіз тауар";
+    const itemPrice = parseFloat(item.price) || 0; // используем parseFloat для правильного типа
+    const itemQuantity = parseInt(item.quantity, 10) || 0; // используем parseInt
+    const itemTotal = itemPrice * itemQuantity;
+
+    total += itemTotal;
+
+    const itemElement = document.createElement('div');
+    itemElement.classList.add('cart-item');
+
+    itemElement.innerHTML = `
+      <img src="${item.img || 'default.jpg'}" alt="${itemName}" class="cart-item-image">
+      <div class="cart-item-info">
+        <h3>${itemName}</h3>
+        <p>Бағасы шт: ${itemPrice.toFixed(2)}₸</p> <!-- Форматируем цену -->
+        <p>Сумма: ${itemTotal.toFixed(2)}₸</p> <!-- Форматируем сумму -->
+        <p>Шт: 
+          <button class="quantity-btn" data-action="decrease" data-index="${index}">-</button> 
+          ${itemQuantity} 
+          <button class="quantity-btn" data-action="increase" data-index="${index}">+</button>
+        </p>
+      </div>
+      <button class="remove-item" data-index="${index}">Жою</button>
+    `;
+
+    cartItems.appendChild(itemElement);
+  });
+
+  totalPrice.textContent = total.toFixed(2) + '₸'; // Форматируем общую сумму
+
+  // Сохраняем изменения в localStorage
+  saveCartToLocalStorage();
+}
+
+// Обработчик для изменения количества товара
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('quantity-btn')) {
+    const action = e.target.dataset.action;
+    const index = e.target.dataset.index;
+    const item = cart[index];
+
+    if (action === 'increase') {
+      item.quantity++;
+    } else if (action === 'decrease' && item.quantity > 1) {
+      item.quantity--;
+    }
+
+    updateCart();
+  }
+
+  // Обработчик для удаления товара
+  if (e.target.classList.contains('remove-item')) {
+    const index = e.target.dataset.index;
+    cart.splice(index, 1);
+    updateCart();
+  }
+});
+
+// Обработчик для кнопки "Купить"
+document.getElementById('buy-button').addEventListener('click', () => {
+  document.getElementById('payment-modal').style.display = 'block';
+});
+
+// Обработчик для закрытия модального окна
+document.getElementById('close-payment-modal').addEventListener('click', () => {
+  document.getElementById('payment-modal').style.display = 'none';
+});
+
+// Инициализация корзины
+updateCart();
+
+
+  </script>
+
+</body>
+</html>

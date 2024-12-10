@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIG Jewelry Header</title>
+ 
+</head>
+<body>
+  <header class="header">
+    <div class="logo">AIG JEWELRY</div>
+    <nav class="nav">
+      <a href="#main-content">Басты бет</a>
+      <a href="#catalog" class="catalog-link">Каталог</a>
+
+      <!-- Выпадающее меню для каталога -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Каталог</a>
+        <div class="dropdown-content">
+          <a href="#">Драгоценности</a>
+          <a href="#">Часы</a>
+          <a href="#">Серебро</a>
+          <a href="#">Золото</a>
+        </div>
+      </div>
+
+      <a href="#">Серіктестер</a>
+      <a href="#">Біз жайлы</a>
+      <a href="cart.html">Себет</a>
+    </nav>
+
+    <!-- Иконка для сайдбара -->
+    <div class="sidebar-toggle" id="sidebar-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
+
+  <!-- Сайдбар -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">Каталог</a></li>
+      <li><a href="#">Контакты</a></li>
+      <li><a href="#">О нас</a></li>
+    </ul>
+  </div>
+
+  <!-- Подключение скриптов -->
+  <script>
+
+    document.getElementById('sidebar-toggle').addEventListener('click', function () {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open'); // Открытие/закрытие сайдбара
+    });
+    
+  </script>
+</body>
+</html>

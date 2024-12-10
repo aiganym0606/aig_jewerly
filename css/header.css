@@ -1,0 +1,190 @@
+header {
+    margin-left:120px ;
+    width: 1125px;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 40px;
+    font-family: "Fenix", serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: space-between; /* Для распределения логотипа и навигации */
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(18, 7, 7, 0.329);
+  }
+  
+  /* Логотип */
+  .header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #4f3828, #0000008d 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Навигация */
+  .nav {
+    display: flex;
+    justify-content: center; /* Центрируем ссылки */
+    flex-grow: 1;
+  }
+  
+  .nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #0d0707;
+    font-size: 16px;
+  }
+  
+  .nav a:hover {
+    color: #d09d04;
+  }
+  
+  /* Стили для выпадающего меню */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Иконка для сайдбара */
+/* Иконка для сайдбара */
+.sidebar-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 35px;
+
+    right: 240px; /* Совпадает с шириной сайдбара */
+    transition: right 0.3s ease-in-out; /* Движение иконки вместе с сайдбаром */
+    z-index: 1100;
+  }
+  
+  .sidebar-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 4px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  /* Сайдбар */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Скрыт по умолчанию */
+    height: 300px;
+    width: 200px;
+    background-color: #3e3737b1;
+    color: white;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.39);
+    z-index: 1000;
+    border-radius: 20px;
+  }
+  
+  .sidebar.open {
+    right: 0; /* Показывает сайдбар */
+  }
+  
+  /* Анимация полосок при открытии */
+  .sidebar.open + .sidebar-toggle {
+    right: 0; /* Переместить иконку вместе с сайдбаром */
+  }
+  
+  .sidebar.open + .sidebar-toggle .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .sidebar.open + .sidebar-toggle .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .sidebar.open + .sidebar-toggle .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  /* Ссылки внутри сайдбара */
+  .sidebar ul {
+    list-style-type: none;
+    padding: 20px;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 0; /* Уменьшили padding для равномерного вида */
+  }
+  
+  .sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px; /* Увеличили внутренние отступы */
+    background-color: transparent; /* Фон по умолчанию — прозрачный */
+    border-radius: 10px; /* Скругленные углы */
+    transition: all 0.3s ease-in-out; /* Плавный переход */
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Исходное состояние тени */
+  }
+  
+  .sidebar ul li a:hover {
+    background: linear-gradient(90deg, #f0e1b7, #eeb076); /* Градиент при наведении */
+    color: #000; /* Темный текст для контраста */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Добавили тень при наведении */
+  }
+  
+  
+  
+/* Сайдбар открыт */
+.sidebar.open {
+  right: 0; /* Показывает сайдбар */
+}
+
+/* Анимация для полосок при открытии */
+.sidebar.open ~ .header .sidebar-toggle .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.sidebar.open ~ .header .sidebar-toggle .bar:nth-child(2) {
+  opacity: 0; /* Скрывает среднюю полоску */
+}
+
+.sidebar.open ~ .header .sidebar-toggle .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+  
+  /* Мобильная версия */
+  @media screen and (max-width: 768px) {
+    .sidebar-toggle {
+      display: block;
+    }
+  
+    .nav {
+      display: none; /* Скрываем меню на мобильных устройствах */
+    }
+  }
